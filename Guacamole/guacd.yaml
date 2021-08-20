@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: guacd
+spec:
+    ports:
+     - port: 4822
+       protocol: TCP
+       targetPort: 4822
+    selector:
+       app: guacd
+
+---
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: guacd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: guacd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: guacd
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - guacd
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: guacd
+        image: guacamole/guacd
+        ports:
+        - containerPort: 4822
+        readinessProbe:
+          tcpSocket:
+            port: 4822
+          initialDelaySeconds: 10
+          periodSeconds: 5
+         
+

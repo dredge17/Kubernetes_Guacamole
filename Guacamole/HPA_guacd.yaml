@@ -1,0 +1,23 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: guacd-autoscale
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: guacd-deployment
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: Object 
+    object:
+      metric:
+        name: cpu_per_second
+      describedObject:
+        apiVersion: v1
+        kind: Pod 
+        name: guacamole-deployment-6b4b7d4f58-dcxpx
+      target: 
+        type: Value 
+        value: 0.25

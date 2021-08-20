@@ -1,0 +1,43 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-deployment
+  namespace: stress
+spec:
+  selector:
+    matchLabels:
+      app: selenium-node
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: selenium-node
+    spec:
+      volumes:
+      - name: dshm
+        emptyDir:
+          medium: Memory
+      hostAliases:
+      - ip: "IP to map hostname"
+        hostnames:
+        - "guacamole.com"
+      containers:
+      - name: selenium-node
+        image: selenium/node-chrome-debug:3.141
+        ports:
+        - containerPort: 5555
+        volumeMounts:
+          - mountPath: /dev/shm
+            name: dshm
+        env:
+          - name: HUB_HOST
+            value: "selenium-hub"
+          - name: HUB_PORT
+            value: "4444"
+          - name: NODE_MAX_INSTANCES
+            value: "5"
+          - name: NODE_MAX_SESSION
+            value: "5"
+      nodeName: hostname  
+
