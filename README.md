@@ -25,4 +25,4 @@ The ingress resource is used for connect the user to the web panel of the seleni
 configurations of the node registered to the HUB.
 
 
-![ScreenShot](project_scheme.png)
+![ScreenShot](https://github.com/dredge17/Kubernetes_Guacamole/blob/master/projetc_scheme.png)
