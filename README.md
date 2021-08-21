@@ -23,3 +23,6 @@ Stress directory contains the deployment relative to the selenium HUB and to chr
 These resources have been assigned to a specific node , added only to run stress test.
 The ingress resource is used for connect the user to the web panel of the selenium hub in order to check the 
 configurations of the node registered to the HUB.
+
+
+![ScreenShot](project_scheme.png)
