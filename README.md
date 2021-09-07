@@ -2,7 +2,7 @@ This repository contains files that make up Kubernetes cluster developed for my 
 The cluster can not be deploy because of the inconsistency of some parameters present in the yaml files correlated
 to the environment where i deployed the cluster.
 The university assigned me a server where i installed VMWare EXSi hypervisor thanks to which i created 6 VMs.
-Four of these composed Kubernetes cluster while the other two were used for ISCi server and reverse proxy, like HAproxy.
+Four of these composed Kubernetes cluster while the other two were used for iSCSI server and reverse proxy, like HAproxy.
 Thesis's target was to handle Guacamole microservices through Kubernetes cluster permitting students and teachers to connect
 remotly to PC's laboratory.
 
