@@ -4,7 +4,7 @@ to the environment where i deployed the cluster.
 The university assigned me a server where i installed VMWare EXSi hypervisor thanks to which i created 6 VMs.
 Four of these composed Kubernetes cluster while the other two were used for iSCSI server and reverse proxy, like HAproxy.
 Thesis's target was to handle Guacamole microservices through Kubernetes cluster permitting students and teachers to connect
-remotly to PC's laboratory.
+remotly to laboratory's PC.
 
 
 Guacamole directory contains the deployment of the main microservices like Guacamole,Guacd and postgreSQL that mounts
